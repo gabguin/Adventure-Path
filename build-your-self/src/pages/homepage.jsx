@@ -22,6 +22,9 @@ export function HomePage() {
           setQuest={setQuest}
         />
 }
+<div>
+  <p>Quest in progress :  </p>
+</div>
       {quest.map((quest, index) => {
           return (
             <TimerQuest
