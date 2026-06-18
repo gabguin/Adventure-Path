@@ -36,6 +36,6 @@
 .quest-name{
   font-size: 35px;
 }
-.start-button, .stop-button{
+.start-button, .stop-button, .delete-button{
   padding: 8px 13px 8px 13px;
 }
