@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [exp, setExp] = useState(0);
   const [quest, setQuest] = useState([]);
+  const [reward, setReward] = useState([]);
   useEffect(() => {
     const data = window.localStorage.getItem('quest-app');
     if(data) setQuest(JSON.parse(data))
@@ -26,7 +27,7 @@ function App() {
     <Routes>
     <Route index element={
       <HomePage 
-    exp={exp} quest={quest} setQuest={setQuest}></HomePage>}></Route>
+    exp={exp} quest={quest} setQuest={setQuest} reward={reward} setReward={setReward}></HomePage>}></Route>
     <Route path='quest' element={
       <QuestPage
       quest={quest} setExp={setExp} setQuest={setQuest}>

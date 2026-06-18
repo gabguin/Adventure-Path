@@ -5,7 +5,6 @@ export function AddingQuest({ close, setQuest }) {
   const [questName, setQuestName] = useState("");
   const [duration, setDuration] = useState("");
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("");
   function addQuest() {
     if (!questName || !duration) return;
     setQuest(prev => [...prev, {

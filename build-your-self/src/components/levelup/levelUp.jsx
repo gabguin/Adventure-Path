@@ -24,8 +24,7 @@ export function LevelDisplay({ exp }) {
       </div>
       <div>
         <div>
-          <p>Vince Gabriel</p>
-          <p>lvl.{level}</p>
+          <p>Vince Gabriel lvl. {level}</p>
         </div>
         <div className='level-div'>
           <div className='level-status' style={{
