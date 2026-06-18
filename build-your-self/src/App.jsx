@@ -1,6 +1,6 @@
 import './App.css'
-import { AddingQuest } from './components/addQuest'
-import { HomePage } from './pages/homepage'
+import { HomePage } from './pages/homepage/homepage'
+import { AddingQuest } from './components/addquest/addQuest'
 function App() {
   
 

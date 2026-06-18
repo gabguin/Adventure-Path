@@ -1,0 +1,7 @@
+.quest-progress{
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(199, 199, 124);
+}
