@@ -4,5 +4,8 @@
   box-sizing: border-box;
 }
 body{
-  padding: 50px;
+  padding: 50px 25px 25px 25px;
+}
+body{
+  color: green;
 }

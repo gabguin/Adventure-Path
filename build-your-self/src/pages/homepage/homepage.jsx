@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { AddingQuest } from "../../components/addquest/addQuest";
 import { LevelDisplay } from "../../components/levelup/levelUp";
-import {Routes, Route} from 'react-router'
+import { Header } from "../../components/header/header";
+import { Link } from "react-router-dom";
+import {Routes, Route} from 'react-router-dom'
 import "./homepage.css";
-export function HomePage() {
-  const [exp, setExp] = useState(0);
+export function HomePage({exp, quest, setQuest}) {
   const [openQuest, setOpenQuest] = useState(false);
-  const [quest, setQuest] = useState([]);
   return (
     <>
+    <Header></Header>
       <LevelDisplay exp={exp} />
       <button onClick={() => setOpenQuest(true)}>
         Add Quest
@@ -27,12 +28,14 @@ export function HomePage() {
           key={index}
           className="quests-progress-div"
         >
+        <Link to='/quest' className="quest-link">
           <div className="quest-progress">
             <div>Quest {index + 1}</div>
             <div>{item.name}</div>
             <div>{item.description}</div>
             <div>{item.duration}</div>
           </div>
+        </Link>
         </div>
       ))}
     </>

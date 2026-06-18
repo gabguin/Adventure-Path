@@ -1,14 +1,11 @@
 import { useRef, useState, useEffect } from "react"
 import './timer.css'
 export function TimerQuest({
-  questName,
-  description,
-  duration,
-  setExp,
-  deleteThis
+  quest,
+  deleteThis, setExp
 }) {
   const [timer, setTimer] =
-    useState(duration ? duration * 60 : 0);
+    useState(quest.duration ? quest.duration * 60 : 0);
   const [rewardGiven, setRewardGiven] =
     useState(false);
   const start = useRef(null);
@@ -21,17 +18,17 @@ export function TimerQuest({
       ? "0" + seconds
       : seconds;
   const degrees =
-    duration
-      ? (timer / (duration * 60)) * 360
+    quest.duration
+      ? (timer / (quest.duration * 60)) * 360
       : 0;
   useEffect(() => {
     if (timer === 0 && !rewardGiven) {
-      setExp(prev => prev + duration);
+      setExp(prev => prev + quest.duration);
       setRewardGiven(true);
       clearInterval(start.current);
       start.current = null;
     }
-  }, [timer, duration, setExp, rewardGiven]);
+  }, [timer, quest.duration, setExp, rewardGiven]);
   function startTimer() {
     start.current = setInterval(() => {
       setTimer(prev => {
@@ -66,10 +63,10 @@ export function TimerQuest({
       </div>
       <div>
         <p className="quest-name">
-          {questName}
+          {quest.questName}
         </p>
         <p className="description-name">
-          {description}
+          {quest.description}
         </p>
       </div>
       <div>
@@ -88,7 +85,7 @@ export function TimerQuest({
         <button className="delete-button" onClick={() => deleteThis()}>delete</button>
       </div>
       <div>
-        +{duration} exp
+        +{quest.duration} exp
       </div>
 
     </div>
