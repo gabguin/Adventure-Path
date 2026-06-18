@@ -5,21 +5,20 @@ export function AddingQuest({ close, setQuest }) {
   const [questName, setQuestName] = useState("");
   const [duration, setDuration] = useState("");
   const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
   function addQuest() {
-    if(!questName || !duration) return;
+    if (!questName || !duration) return;
     setQuest(prev => [...prev, {
       questName,
       duration: Number(duration),
-      description
+      description,
+      status: "ongoing"
     }]);
     close();
   }
   return (
     <Overlay>
       <div className="quest-div">
-        <div className='exit-div'>
-          <button className='exit-button' onClick={close}>close</button>
-        </div>
         <h2>
           Quest
         </h2>
@@ -33,7 +32,10 @@ export function AddingQuest({ close, setQuest }) {
         <div>
           <textarea placeholder='desription' onChange={(event) => setDescription(event.target.value)} />
         </div>
-        <button className='quest-button' onClick={addQuest}>Add Quest</button>
+        <button className='quest-button' onClick={addQuest}>confirm</button>
+        <div className='exit-div'>
+          <button className='exit-button' onClick={close}>exit</button>
+        </div>
       </div>
     </Overlay>
   )

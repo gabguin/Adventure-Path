@@ -29,7 +29,7 @@ function App() {
     exp={exp} quest={quest} setQuest={setQuest}></HomePage>}></Route>
     <Route path='quest' element={
       <QuestPage
-      quest={quest} setExp={setExp}>
+      quest={quest} setExp={setExp} setQuest={setQuest}>
       </QuestPage>}></Route>
     </Routes>
   )

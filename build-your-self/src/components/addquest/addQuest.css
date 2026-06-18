@@ -17,8 +17,8 @@
 }
 .exit-div{
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 16px;
+  right: -3px;
   background-color: inherit;
 }
 .exit-button{
