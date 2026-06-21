@@ -86,13 +86,14 @@ export function TimerQuest({
     setQuest
   ]);
   function startTimer() {
+    if(start.current) return;
     start.current = setInterval(() => {
       setTimer(prev =>
         prev <= 0
           ? 0
           : prev - 1
       );
-    }, 1);
+    }, 1000);
   }
   function stopTimer() {
     clearInterval(start.current);
