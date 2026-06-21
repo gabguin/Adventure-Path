@@ -1,8 +1,0 @@
-.reward-page-div{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 309px ));
-  gap: 25px;
-}
-body{
-  padding-top: 85px;
-}

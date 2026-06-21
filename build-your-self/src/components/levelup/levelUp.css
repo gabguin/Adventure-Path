@@ -1,3 +1,7 @@
+.text, .name{
+  color: rgb(247, 248, 244);
+  font-weight: 600;
+}
 .levelup-div{
   display: flex;
   align-items: center;
@@ -10,7 +14,7 @@
 }
 .level-div{
   width: 750px;
-  background-color: BLACK;
+  background-color: rgb(52, 34, 26);
   border-radius: 23px;
   overflow: hidden;
   height: 25px;
@@ -27,7 +31,7 @@
 }
 .level-status{
   display: flex;
-  background-color: #f5ad80;
+  background-color: #f5ffbd;
   transition: width 0.5s;
   height: 100%;
   overflow: hidden;
@@ -36,7 +40,7 @@
 .level-up{
   width: 750px;
   display: flex;
-  justify-content: space-between  ;
+  justify-content: space-between ;
 }
 .levelup-circle{
   height: 125px;

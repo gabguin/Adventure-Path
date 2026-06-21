@@ -1,3 +1,4 @@
+import './attachReward.css'
 export function AttachReward({ item, setReward }) {
  function startReward(id){
    setReward(prev =>
@@ -8,10 +9,12 @@ export function AttachReward({ item, setReward }) {
      ));
  }
  return (
-   <button onClick={() => startReward(item.id)}>
+  <div className="attachReward-div">
+   <button onClick={() => startReward(item.id)} className='button-task'>
      {item.isActive
-       ? "task ongoing"
-       : "start this task"}
+       ? "Status : Ongoing"
+       : "Start"}
    </button>
+   </div>
  );
 }

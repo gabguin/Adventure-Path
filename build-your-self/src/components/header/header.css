@@ -6,7 +6,7 @@
   margin-right: 75px;
   gap: 40px;
   padding: 20px 20px 20px 20px;
-  z-index: 100000;
+  z-index: 10000;
 } 
 .home-link, .quest-link, .reward-link{
   font-size: 25px;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Overlay } from "../../components/overlay/overlay";
 import './displayreward.css'
+import Book from '../../../assets/Book-Page.jpg'
 import { AttachReward } from "./attachReward";
 export function RewardComponent({ setReward, setOpenReward }) {
   const [image, setImage] = useState(null);
@@ -38,38 +38,39 @@ export function RewardComponent({ setReward, setOpenReward }) {
     setOpenReward(false);
   }
   return (
-    <Overlay>
-      <div className="reward-div">
-        <div>
+      <div className="reward-div" style={{backgroundImage : `url(${Book})`,
+          backgroundSize: "cover", backgroundRepeat : "no-repeat", backgroundPosition: "center" }}>\
+
+        <h2>Reward</h2>
+        <div className="close-reward">
           <button onClick={() => setOpenReward(false)}>
-            close
+            X
           </button>
         </div>
 
-        <input
+        <span>Image :</span><input
           type="file"
           accept="image/*"
           onChange={acceptImage}
         />
         <div>
-          <input
+          <input className="input-text"
             placeholder="price"
             onChange={(event) => setPrice(event.target.value)}
           />
         </div>
         <div>
-          <textarea
+          <textarea className="input-text"
             onChange={(event) => setInfo(event.target.value)}
           /> </div>
         <div>
-          <button onClick={addReward}>
-            add
+          <button onClick={addReward} className="confirm-quest">
+            Confirm Quest
           </button>
         </div>
       <div>
       
       </div>
       </div>
-    </Overlay>
   );
 }

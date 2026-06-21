@@ -1,9 +1,8 @@
 import './App.css'
 import { HomePage } from './pages/homepage/homepage'
-import { QuestPage } from './pages/quest/questpage'
+import { QuestPage } from './pages/quest/quest-display/questpage'
 import { Route, Routes } from 'react-router-dom'
 import { useSaveStorage } from './reusable/localstorage'
-import { RewardPage } from './pages/reward/rewardpage'
 function App() {
   const [exp, setExp] = useSaveStorage("exp", 0);
   const [quest, setQuest] = useSaveStorage("quest", []);
@@ -14,13 +13,10 @@ function App() {
       <Route index element={
         <HomePage
           exp={exp} quest={quest} setQuest={setQuest} reward={reward} setReward={setReward}></HomePage>}></Route>
-      <Route path='quest' element={
+      <Route path='/quest' element={
         <QuestPage
-          quest={quest} setExp={setExp} setQuest={setQuest} setReward={setReward}>
+          quest={quest} setExp={setExp} setQuest={setQuest} setReward={setReward} reward={reward}>
         </QuestPage>}></Route>
-      <Route path='/reward' element={ <RewardPage
-        setReward={setReward} reward={reward}/>}>
-      </Route>
     </Routes>
   )
 }

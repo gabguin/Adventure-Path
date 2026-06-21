@@ -1,32 +1,31 @@
-.quest-in-progress{
+.quest-in-progress {
   width: 100%;
   background-color: rgb(223, 209, 209);
   margin-top: 20px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 45px;
+  padding-top: 10px;
   align-items: center;
   justify-content: space-around;
   position: relative;
 }
-.clock-time{
+.clock-time {
   font-size: 25px;
 }
-.timer-circle{
+.timer-circle {
   position: relative;
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
-.inside-circle{
+.inside-circle {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: conic-gradient(
-    white 360deg
-  );
+  background: conic-gradient(white 360deg);
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -34,34 +33,43 @@
   align-items: center;
   justify-content: center;
 }
-.quest-name{
-  font-size: 35px;
+.quest-name {
+  font-size: 25px;
 }
-.start-button, .stop-button{
-  padding: 8px 13px 8px 13px;
+.start-button,
+.stop-button {
+  padding: 8px 13px;
 }
-.delete-button{
-  background-color: inherit;
+.buttons-timer button {
+  font-size: 15px;
+}
+.exit-button {
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 999;
+}
+.setting-image {
+  width: 20px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.delete-div {
+  margin-top: 6px;
+  transition: 0.2s ease;
+  pointer-events: auto;
+}
+.delete-button {
+  font-size: 15px;
   border: none;
   cursor: pointer;
-}
-.exit-button{
-  border: none;
-  position: absolute;
-  bottom: 0px;
-  right: 5px;
-   cursor: pointer;
-}
-.delete-div{
-  opacity: 0;
-  position: absolute;
-  transition: 0.2s;
-  pointer-events: none;
-}
-.setting-image{
-  width: 15px;
-}
-.exit-button:hover .delete-div{
-  opacity: 1;
-  pointer-events: auto;
+  white-space: nowrap;
+  background-color: inherit;
+  color: white;
 }

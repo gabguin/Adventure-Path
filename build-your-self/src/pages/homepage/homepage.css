@@ -12,7 +12,7 @@
 .title{
   margin-bottom: 35px;
   color: white;
-  font-size: 40px;
+  font-size: 35px;
 }
 .homepage-div{
   position: relative;
@@ -21,8 +21,11 @@
 }
 .event-text{
   font-size: 25px;
-  color: black;
+  color: rgb(252, 253, 235);
   font-weight: 700;
+}
+.eye-image{
+  width: 180px;
 }
 .quest-link{
   text-decoration: none;
@@ -33,8 +36,9 @@
 .reward-display{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
-  margin-bottom: 125px;
+  margin-bottom: 25px;
   gap: 30px;
+  margin-left: 25px;
 }
 .request-board{
   width: calc(100% + 30px);
@@ -54,7 +58,7 @@
 .blank-card{
   width: 100%;
   height: 100%;
-  background-color: gray;
+  background-color: #c3ae8a;
   display: flex;
   justify-content: center;
   align-items: center;

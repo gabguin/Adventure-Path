@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import "./timer.css";
 import SettingsImage from "../../assets/settings-image.png";
+import QuestPaper from "../../assets/quest-board-paper.png";
+
 export function TimerQuest({
   quest,
   deleteThis,
@@ -16,57 +18,83 @@ export function TimerQuest({
   const [rewardGiven, setRewardGiven] = useState(false);
   const start = useRef(null);
   useEffect(() => {
-    const data = window.localStorage.getItem(storageKey);
-    if (data) {
+    const data = localStorage.getItem(storageKey);
+    if (data !== null) {
       setTimer(JSON.parse(data));
+    } else {
+      setTimer(quest.duration * 60);
     }
-  }, [storageKey]);
+    setRewardGiven(false);
+  }, [storageKey, quest.duration]);
   useEffect(() => {
-    window.localStorage.setItem(storageKey, JSON.stringify(timer));
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(timer)
+    );
   }, [timer, storageKey]);
   const minutes = Math.floor(timer / 60);
   const seconds = timer % 60;
-  const newSeconds = seconds < 10 ? `0${seconds}` : seconds;
-  const total = quest.duration ? quest.duration * 60 : 0;
+  const newSeconds =
+    seconds < 10
+      ? `0${seconds}`
+      : seconds;
+  const total =
+    quest.duration
+      ? quest.duration * 60
+      : 0;
   const elapsed = total - timer;
-  const degrees = total ? (elapsed / total) * 360 : 0;
+  const degrees =
+    total
+      ? (elapsed / total) * 360
+      : 0;
   useEffect(() => {
-    function finishQuest(gainedExp) {
-      setExp(prev => prev + gainedExp);
-      setReward(prev =>
-        prev.map(item =>
-          item.isActive
-            ? {
+    if (timer !== 0 || rewardGiven) return;
+    localStorage.removeItem(storageKey);
+    setExp(prev =>
+      prev + quest.duration
+    );
+    setReward(prev =>
+      prev.map(item =>
+        item.isActive
+          ? {
               ...item,
-              rewardExp: (item.rewardExp || 0) + gainedExp
+              rewardExp:
+                item.rewardExp +
+                quest.duration
             }
-            : item
-        )
-      );
-    }
-    if (timer === 0 && !rewardGiven && start.current) {
-      finishQuest(quest.duration);
-      setQuest(prev =>
-        prev.map((q, i) =>
-          i === index ? { ...q, status: "finished" } : q
-        )
-      );
-      setRewardGiven(true);
-      clearInterval(start.current);
-      start.current = null;
-    }
+          : item
+      )
+    );
+    setQuest(prev =>
+      prev.map((q, i) =>
+        i === index
+          ? {
+              ...q,
+              status: "finished"
+            }
+          : q
+      )
+    );
+    setRewardGiven(true);
+    clearInterval(start.current);
+    start.current = null;
   }, [
     timer,
     rewardGiven,
+    storageKey,
     quest.duration,
     index,
-    setQuest,
+    setExp,
     setReward,
-    setExp
+    setQuest
   ]);
   function startTimer() {
     start.current = setInterval(() => {
-      setTimer(prev => (prev <= 0 ? 0 : prev - 1));
+      setTimer(prev =>
+        prev <= 0
+          ? 0
+          : prev - 1
+      );
     }, 1);
   }
   function stopTimer() {
@@ -74,14 +102,26 @@ export function TimerQuest({
     start.current = null;
   }
   return (
-    <div className="quest-in-progress">
-      <p className="quest-name">Quest: {quest.questName}</p>
+    <div
+      className="quest-in-progress"
+      style={{
+        backgroundImage: `url(${QuestPaper})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center"
+      }}
+    >
+      <p className="quest-name">
+        Quest: {quest.questName}
+      </p>
       <div
         className="timer-circle"
         style={{
           background: `conic-gradient(
-            rgb(204,206,228) ${degrees}deg,
-            rgb(63,107,210) 0deg
+            rgb(80,70,68)
+            ${degrees}deg,
+            rgb(137,71,51)
+            0deg
           )`
         }}
       >
@@ -91,28 +131,44 @@ export function TimerQuest({
           </p>
         </div>
       </div>
-      <div>+{quest.duration} exp</div>
       <div>
-        <button className="start-button" onClick={startTimer}>
-          start
+        <span
+          style={{
+            fontSize: "25px"
+          }}
+        >
+          +{quest.duration} exp
+        </span>
+      </div>
+      <div className="buttons-timer">
+        <button
+          className="start-button"
+          onClick={startTimer}
+        >
+          Start
         </button>
-        <button className="stop-button" onClick={stopTimer}>
-          stop
+        <button
+          className="stop-button"
+          onClick={stopTimer}
+        >
+          Stop
         </button>
       </div>
       <div className="exit-button">
-        <img className="setting-image" src={SettingsImage} />
-        <div className="delete-div">
-          <button
-            className="delete-button"
-            onClick={() => deleteThis(quest.id)}
-          >
-            remove
-          </button>
-        </div>
+        <img
+          className="setting-image"
+          src={SettingsImage}
+          onClick={() =>
+            deleteThis(
+              quest.id
+            )
+          }
+        />
       </div>
       <div className="description-div">
-        <p className="description-name">{quest.description}</p>
+        <p className="description-name">
+          {quest.description}
+        </p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import './addQuest.css'
 import { useState } from 'react';
-import { Overlay } from '../overlay/overlay'
+import Book from '../../assets/Book-Page.jpg'
 export function AddingQuest({ close, setQuest }) {
   const [questName, setQuestName] = useState("");
   const [duration, setDuration] = useState("");
@@ -16,26 +16,27 @@ export function AddingQuest({ close, setQuest }) {
     close();
   }
   return (
-    <Overlay>
-      <div className="quest-div">
-        <h2>
+      <div className="quest-div" style={{backgroundImage : `url(${Book})`,
+          backgroundSize: "cover", backgroundRepeat : "no-repeat", backgroundPosition: "center" }}>
+        <h1>
           Quest
-        </h2>
+        </h1>
         <div>
-          <input placeholder="quest name" onChange={(event) => setQuestName(event.target.value)}>
+          <input className='input-text' placeholder="Quest Name" onChange={(event) => setQuestName(event.target.value)}>
           </input>
         </div>
         <div>
-          <input placeholder="duration" onChange={(event) => setDuration(event.target.value)}></input>
+          <input placeholder="Duration" className='input-text'  onChange={(event) => setDuration(event.target.value)}></input>
         </div>
         <div>
-          <textarea placeholder='desription' onChange={(event) => setDescription(event.target.value)} />
+          <textarea placeholder='Desription' className='input-text'  onChange={(event) => setDescription(event.target.value)} />
         </div>
+        <div>
         <button className='quest-button' onClick={addQuest}>confirm</button>
+        </div>
         <div className='exit-div'>
-          <button className='exit-button' onClick={close}>exit</button>
+          <button className='exit-button' onClick={close}>x</button>
         </div>
       </div>
-    </Overlay>
   )
 }

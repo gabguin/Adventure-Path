@@ -1,5 +1,5 @@
 import './levelUp.css'
-import profilePic from '../../assets/profile-pic.webp'
+import profilePic from '../../assets/profile-pic.jpg'
 import { BackgroundImage } from '../background/background';
 export function LevelDisplay({ exp }) {
   let level = 0
@@ -18,8 +18,8 @@ export function LevelDisplay({ exp }) {
         className="levelup-circle"
         style={{
           background: `conic-gradient(
-            #f5ad80 ${percentage * 3.6}deg,
-            #341f16 0deg
+            #f5ffbd ${percentage * 3.6}deg,
+            #362016 0deg
           )`
         }}
       >
@@ -43,11 +43,15 @@ export function LevelDisplay({ exp }) {
         </div>
         <div className="level-up">
           <div>
+            <p className='text'>
             {remainingExp} / {requiredExp}
+            </p>
           </div>
           <div>
+            <p className='text'>
             {requiredExp - remainingExp}
             {" "}more until level up
+            </p>
           </div>
         </div>
       </div>

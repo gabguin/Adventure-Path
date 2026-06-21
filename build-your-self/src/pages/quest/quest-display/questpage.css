@@ -1,0 +1,29 @@
+
+.quest-status{
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, max-content));
+  gap: 25px;
+  justify-content: center;
+}
+.questpage-div{
+  position: relative;
+  z-index: 1;
+
+}
+.commission-button{
+  font-family: inherit;
+  background-color: inherit;
+  border: none;
+  padding: 20px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.commission-button:hover{
+  opacity: 0.5;
+}
+.commission-div{
+  display: flex;
+  justify-content: center;
+}
