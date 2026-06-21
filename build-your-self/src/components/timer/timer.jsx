@@ -21,11 +21,8 @@ export function TimerQuest({
     const data = localStorage.getItem(storageKey);
     if (data !== null) {
       setTimer(JSON.parse(data));
-    } else {
-      setTimer(quest.duration * 60);
     }
-    setRewardGiven(false);
-  }, [storageKey, quest.duration]);
+  }, [storageKey]);
   useEffect(() => {
     localStorage.setItem(
       storageKey,
@@ -57,11 +54,11 @@ export function TimerQuest({
       prev.map(item =>
         item.isActive
           ? {
-              ...item,
-              rewardExp:
-                item.rewardExp +
-                quest.duration
-            }
+            ...item,
+            rewardExp:
+              item.rewardExp +
+              quest.duration
+          }
           : item
       )
     );
@@ -69,9 +66,9 @@ export function TimerQuest({
       prev.map((q, i) =>
         i === index
           ? {
-              ...q,
-              status: "finished"
-            }
+            ...q,
+            status: "finished"
+          }
           : q
       )
     );
@@ -118,9 +115,9 @@ export function TimerQuest({
         className="timer-circle"
         style={{
           background: `conic-gradient(
-            rgb(80,70,68)
+            rgb(77, 75, 82)
             ${degrees}deg,
-            rgb(137,71,51)
+            #6b7dd5
             0deg
           )`
         }}

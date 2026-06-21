@@ -8,5 +8,8 @@
   align-items: center;
   padding-top: 31px;
   font-size: 22px;
-  gap: 40px;
+  gap: 20px;
 } 
+.quest-name{
+  font-size: 300px;
+}

@@ -11,7 +11,7 @@ export function RewardPage({ setReward, reward }) {
       <div className="reward-page-div">
         {reward.map((item, index) => {
           return (
-            <div className="card" key={index} >
+            <div className="card" key={item.id} >
             <RewardDiv item={item} index={index} setReward={setReward}></RewardDiv>
             </div>
           )

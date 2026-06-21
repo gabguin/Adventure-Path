@@ -28,6 +28,7 @@ export function HomePage({ exp, quest, reward }) {
           <div className="blank-card" >
             {reward[index] ? (
               <RewardDiv
+                key={reward[index].id}
                 item={reward[index]}
                 index={index}
               />
@@ -49,7 +50,7 @@ export function HomePage({ exp, quest, reward }) {
       </div>
       <div className="quests-progress-div">
         {quest.map((item, index) => (
-          <Link to='/quest' className="quest-link" key={index}>
+          <Link to='/quest' className="quest-link" key={item.id}>
             <QuestDiv item={item} index={index}></QuestDiv>
           </Link>
         ))}

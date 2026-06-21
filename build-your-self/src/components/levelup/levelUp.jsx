@@ -18,7 +18,7 @@ export function LevelDisplay({ exp }) {
         className="levelup-circle"
         style={{
           background: `conic-gradient(
-            #f5ffbd ${percentage * 3.6}deg,
+            #abff74 ${percentage * 3.6}deg,
             #362016 0deg
           )`
         }}

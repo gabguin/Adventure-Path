@@ -29,7 +29,7 @@ export function QuestPage({
       />
       <div className="questpage-div">
         <div className="quest-status">
-          {quest.map((quest) => (
+          {quest.map((quest, index) => (
             <TimerQuest
               key={quest.id}
               quest={quest}
@@ -37,6 +37,7 @@ export function QuestPage({
               setQuest={setQuest}
               deleteThis={deleteThis}
               setReward={setReward}
+              index={index}
             />
           ))}
         </div>
