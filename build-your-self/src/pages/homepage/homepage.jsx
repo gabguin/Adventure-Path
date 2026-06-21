@@ -1,58 +1,55 @@
-import { useState } from "react";
 import { AddingQuest } from "../../components/addquest/addQuest";
 import { LevelDisplay } from "../../components/levelup/levelUp";
 import { Header } from "../../components/header/header";
 import { Link } from "react-router-dom";
 import { Routes, Route } from 'react-router-dom'
-import { RewardComponent } from "../../components/reward/reward";
+import { RewardComponent } from "../reward/displayreward";
+import { QuestDiv } from "./questdiv";
+import { RewardDiv } from "../../components/rewardContainer/rewarddiv";
+import { BackgroundImage } from "../../components/background/background";
+import TavernBackground from "../../assets/genshin-background.jpg"
 import "./homepage.css";
-export function HomePage({ exp, quest, setQuest, reward, setReward}) {
-  const [openQuest, setOpenQuest] = useState(false);
-  const [openReward, setOpenReward] = useState(false);
+export function HomePage({ exp, quest, reward }) {
   return (
-    <>
+    <div className="homepage-div">
+      <div className="title-div">
+    <h1 className="title">Adventure: Own Path </h1>
+    </div>
+    <BackgroundImage src={TavernBackground}></BackgroundImage>
       <Header></Header>
       <LevelDisplay exp={exp} />
-      <button onClick={() => setOpenQuest(true)}>
-        Add Quest
-      </button>
-      {openQuest && (
-        <AddingQuest
-          close={() => setOpenQuest(false)}
-          setQuest={setQuest}
-        />
-      )}
-      <button onClick={() => setOpenReward(true)}>add reward</button>
-      {openReward && 
-      <RewardComponent 
-      setReward={setReward}
-      close={close} 
-      setOpenReward={setOpenReward}>
-        </RewardComponent>}
-      {reward.map((item, index) => {
-        return (
-          <div key={index}>
-            <img src={item.image}></img>
-            <p>{item.price}</p>
-            <p>{item.info}</p>
+      <div className="event-div"><p className="event-text">Events : </p></div>
+      <div className="reward-display">
+        {[0, 1].map((index) => (
+          <Link to='/reward' key={index}>
+          <div className="blank-card" >
+            {reward[index] ? (
+              <RewardDiv
+                item={reward[index]}
+                index={index}
+              />
+            ) : (
+              <span className="add-a-reward">+</span>
+            )}
           </div>
-        )
-      })}
-      <div>
-        <p>Quest in progress:</p>
+          </Link>
+        ))}
+        <Link to='/reward'>
+        <div className="blank-card">
+          see more rewards
+        </div>
+        </Link>
+      </div>
+      <div className="request-board">
+        <p className="request-text">QUEST BOARD </p>
       </div>
       <div className="quests-progress-div">
-      {quest.map((item, index) => (
-          <Link to='/quest' className="quest-link" key={index}> 
-          <div className="quest-progress">
-              <div><p>Quest {index + 1} : {item.questName} </p></div>
-              <div><p>Status: {item.status}</p></div>
-              <div><p>Reward: {item.duration}xp</p></div>
-              <div><p>{item.description}</p></div>
-          </div>
-             </Link>
-      ))}
+        {quest.map((item, index) => (
+          <Link to='/quest' className="quest-link" key={index}>
+            <QuestDiv item={item} index={index}></QuestDiv>
+          </Link>
+        ))}
       </div>
-    </>
+    </div>
   );
 }

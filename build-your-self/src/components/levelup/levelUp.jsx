@@ -1,41 +1,55 @@
 import './levelUp.css'
 import profilePic from '../../assets/profile-pic.webp'
+import { BackgroundImage } from '../background/background';
 export function LevelDisplay({ exp }) {
-  let requiredExp = 25;
-  let remainingExp = exp;
-  let level = 0;
-  let levelUp = Math.ceil(exp / 50);
+  let level = 0
+  let requiredExp = 25
+  let remainingExp = exp
   while (remainingExp >= requiredExp) {
-    requiredExp += 50 * levelUp;
-    remainingExp = requiredExp - exp;
-    level = level + levelUp;
+    remainingExp -= requiredExp
+    level++
+    requiredExp += 150
   }
-  const barPercentage = (exp / requiredExp) * 100;
-  const circlePercentage = (exp / requiredExp) * 360;
+  const percentage =
+    (remainingExp / requiredExp) * 100
   return (
-    <div className='levelup-div'>
-      <div className='levelup-circle' style={{
-        background: `conic-gradient(
-        red ${circlePercentage}deg,
-        black 0deg)`}}>
-        <div className='inside-circle'>
-          <img src={profilePic} className='profile-pic'></img>
+    <div className="levelup-div">
+      <div
+        className="levelup-circle"
+        style={{
+          background: `conic-gradient(
+            #f5ad80 ${percentage * 3.6}deg,
+            #341f16 0deg
+          )`
+        }}
+      >
+        <div className="inside-circle">
+          <img
+            src={profilePic}
+            className="profile-pic"
+            alt=""
+          />
         </div>
       </div>
-      <div>
-        <div>
-          <p>Vince Gabriel lvl. {level}</p>
+      <div className='levelstatus-div'>
+        <div><p className='name'> Gabbi lvl. {level}</p></div>
+        <div className="level-div">
+          <div
+            className="level-status"
+            style={{
+              width: `${percentage}%`
+            }}
+          />
         </div>
-        <div className='level-div'>
-          <div className='level-status' style={{
-            width: `${barPercentage}%`
-          }} >
+        <div className="level-up">
+          <div>
+            {remainingExp} / {requiredExp}
+          </div>
+          <div>
+            {requiredExp - remainingExp}
+            {" "}more until level up
           </div>
         </div>
-         <div className='level-up'>
-            <div>{exp} / {requiredExp}</div>
-            <div>{remainingExp} more until level up</div>
-          </div>
       </div>
     </div>
   )

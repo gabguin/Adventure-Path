@@ -1,16 +1,14 @@
 .header-div{
-  background-color: gray;
   position: fixed;
   left: 0; right: 0; top: 0;
   display: flex;
-  gap: 25px;
-  padding: 10px 10px 10px 10px;
+  justify-content: end;
+  margin-right: 75px;
+  gap: 40px;
+  padding: 20px 20px 20px 20px;
+  z-index: 100000;
 } 
-.header-link{
-  text-decoration: none;
-  color: black;
-}
-.quest-link{
-  text-decoration: none;
-  color: black;
+.home-link, .quest-link, .reward-link{
+  font-size: 25px;
+  color: white;
 }

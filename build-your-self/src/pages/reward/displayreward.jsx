@@ -1,29 +1,38 @@
 import { useState } from "react";
-import { Overlay } from "../overlay/overlay";
-import "./reward.css"
+import { Overlay } from "../../components/overlay/overlay";
+import './displayreward.css'
+import { AttachReward } from "./attachReward";
 export function RewardComponent({ setReward, setOpenReward }) {
   const [image, setImage] = useState(null);
   const [info, setInfo] = useState('');
   const [price, setPrice] = useState('');
   function acceptImage(event) {
     const file = event.target.files[0];
-    if(!file) return;
+    if (!file) return;
     if (!file.type.startsWith("image/")) {
       event.target.value = '';
       return;
     }
-     setImage(URL.createObjectURL(file));
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
   }
   function addReward() {
-    if (!price || !info) {
+    if (!price || !image) {
       return;
     }
     setReward(prev => [
       ...prev,
       {
+        id: crypto.randomUUID(),
         image,
         info,
-        price
+        requiredExp: Number(price),
+        isActive: false,
+        rewardExp : 0
       }
     ]);
     setOpenReward(false);
@@ -33,8 +42,8 @@ export function RewardComponent({ setReward, setOpenReward }) {
       <div className="reward-div">
         <div>
           <button onClick={() => setOpenReward(false)}>
-          close
-        </button>
+            close
+          </button>
         </div>
 
         <input
@@ -57,6 +66,9 @@ export function RewardComponent({ setReward, setOpenReward }) {
             add
           </button>
         </div>
+      <div>
+      
+      </div>
       </div>
     </Overlay>
   );

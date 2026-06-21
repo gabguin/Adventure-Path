@@ -1,0 +1,12 @@
+.quest-progress{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 10px;
+  box-sizing: border-box;
+  align-items: center;
+  padding-top: 31px;
+  font-size: 25px;
+  gap: 40px;
+} 

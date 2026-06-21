@@ -4,18 +4,61 @@
   gap: 20px;
   width: 100%;
 }
-.quest-progress{
-  width: 100%;
+.title-div{
   display: flex;
-  flex-direction: column;
-  background-color: rgb(199, 199, 124);
-  min-height: 150px;
-  padding: 10px;
-  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  margin-bottom: 35px;
+  color: white;
+  font-size: 40px;
+}
+.homepage-div{
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+.event-text{
+  font-size: 25px;
+  color: black;
+  font-weight: 700;
 }
 .quest-link{
   text-decoration: none;
   display: flex;
   flex-direction: column;
   gap: 7px;
+}
+.reward-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+  margin-bottom: 125px;
+  gap: 30px;
+}
+.request-board{
+  width: calc(100% + 30px);
+  background-color: #876d3d;
+  margin-left: -20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.request-text{
+  font-size: 30px;
+  text-align: center;
+  margin-right: 15px;
+  color: black;
+}
+.blank-card{
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-a-reward{
+  font-size: 250px;
 }

@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+  position: relative;
+  z-index: 1000;
+  scrollbar-width: none;
 }
 body{
-  padding: 50px 25px 25px 25px;
-}
-body{
-  color: green;
+  padding: 70px 25px 25px 25px;
 }

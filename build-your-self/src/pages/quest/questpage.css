@@ -1,3 +1,4 @@
+
 .quest-status{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 395px));
