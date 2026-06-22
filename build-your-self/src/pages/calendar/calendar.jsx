@@ -7,6 +7,7 @@ export function CalendarJsx(){
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
   const calendarMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', ]
   const displayMonth = calendarMonths[month];
   return(
     <>
@@ -28,7 +29,7 @@ export function CalendarJsx(){
       console.log(month);
     }}>next</button>
     {year} {displayMonth}
-    <DaysOfTheMonth month={month} year={year}></DaysOfTheMonth>
+    <DaysOfTheMonth month={month} year={year} days={days}></DaysOfTheMonth>
     </>
   )
 }
