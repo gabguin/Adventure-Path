@@ -11,6 +11,9 @@ export function Header(){
       <Link to="/quest" >
       <div><p className='quest-link'>Quest</p></div>
       </Link>
+      <Link to="/calendar">
+      <div><p className='calendar-link'>Reward</p></div>
+      </Link>
     </div>
   )
 }

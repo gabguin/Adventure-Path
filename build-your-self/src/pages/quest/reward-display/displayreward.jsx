@@ -39,7 +39,7 @@ export function RewardComponent({ setReward, setOpenReward }) {
   }
   return (
       <div className="reward-div" style={{backgroundImage : `url(${Book})`,
-          backgroundSize: "cover", backgroundRepeat : "no-repeat", backgroundPosition: "center" }}>\
+          backgroundSize: "cover", backgroundRepeat : "no-repeat", backgroundPosition: "center" }}>
 
         <h2>Reward</h2>
         <div className="close-reward">

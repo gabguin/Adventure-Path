@@ -12,7 +12,8 @@ export function QuestPage({
   setExp,
   setQuest,
   setReward,
-  reward
+  reward,
+  trackContribution
 }) {
   const [openQuest, setOpenQuest] = useState(false);
   function deleteThis(id) {
@@ -38,6 +39,7 @@ export function QuestPage({
               deleteThis={deleteThis}
               setReward={setReward}
               index={index}
+              trackContribution={trackContribution}
             />
           ))}
         </div>

@@ -1,38 +1,50 @@
-import './days.css'
-export function DaysOfTheMonth({month, year, days}){
-  const numberOfDays = [];
-  const blankCards = [];
-  const currentMonthFirst = new Date(year, month, 1)
-  const firstday = currentMonthFirst.getDay();
-  function getNumberDays(month, year){
-  const days = new Date(year, month + 1, 0)
-  const day = days.getDate();
-  return day;
+import "./days.css";
+export function DaysOfTheMonth({changingDate, days, contributions = {}}) {
+  const month = changingDate.month;
+  const year = changingDate.year;
+  function getNumberDays(month, year) {
+    return new Date(year, month + 1, 0).getDate();
   }
-  const numberDays = getNumberDays(month,year)
-  for(let i = 0; i < numberDays; i++){
-    numberOfDays.push(i)
-  }
-   for(let i = 0; i < firstday; i++){
-    blankCards.push("");
-  }
-  return(
+  const numberDays =
+    getNumberDays(month, year);
+  const firstday =
+    new Date(year, month, 1).getDay();
+  return (
     <div className="grid-div">
-      {days.map((days,index) => {
-      return (
-        <p key={index}>{days}</p>
-      )
-    })}
-        {blankCards.map((item, index) => {
-        return(
-          <p key={index}>{item}</p>
-        )
-      })}
-      {numberOfDays.map((item, index) => {
-        return(
-          <p key={index}>{item + 1}</p>
-        )
+      {days.map((day, index) => (
+        <p key={`day-${index}`}>
+          {day}
+        </p>
+      ))}
+      {Array(firstday)
+        .fill("")
+        .map((_, index) => (
+          <p key={`blank-${index}`}></p>
+      ))}
+      {Array(numberDays)
+        .fill("")
+        .map((_, index) => {
+          const dateKey =
+            `${year}-${month + 1}-${index + 1}`;
+          const exp =
+            contributions[dateKey] || 0;
+          const intensity =
+            Math.min(exp / 100, 1);
+          return (
+            <p
+              key={`date-${index}`}
+              style={{
+                backgroundColor:
+                  exp > 0
+                    ? `rgba(0, 180, 0, ${intensity})`
+                    : "",
+                color: "black"
+              }}
+            >
+              {index + 1}
+            </p>
+          );
       })}
     </div>
-  )
+  );
 }

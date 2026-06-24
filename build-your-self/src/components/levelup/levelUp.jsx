@@ -3,12 +3,12 @@ import profilePic from '../../assets/profile-pic.jpg'
 import { BackgroundImage } from '../background/background';
 export function LevelDisplay({ exp }) {
   let level = 0
-  let requiredExp = 25
+  let requiredExp = 50
   let remainingExp = exp
   while (remainingExp >= requiredExp) {
     remainingExp -= requiredExp
     level++
-    requiredExp += 150
+    requiredExp += 120
   }
   const percentage =
     (remainingExp / requiredExp) * 100

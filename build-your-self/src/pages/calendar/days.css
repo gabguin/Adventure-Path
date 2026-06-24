@@ -2,3 +2,6 @@
   display: grid;
   grid-template-columns: repeat(7, minmax(200px, 1fr));
 }
+body{
+  background-color: rgb(209, 166, 166);
+}
