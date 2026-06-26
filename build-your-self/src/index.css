@@ -7,6 +7,10 @@
   position: relative;
   z-index: 1000;
   scrollbar-width: none;
+   font-family: "Cormorant Infant", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 body{
   padding: 70px 25px 25px 25px;

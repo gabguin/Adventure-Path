@@ -1,0 +1,25 @@
+
+.button-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+.month-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-div img{
+  width: 25px;
+  object-fit: contain;
+}
+.button-div button{
+  background-color: inherit;
+  border: none;
+}
+.month-header{
+  color: white;
+  font-size: 40px;
+}

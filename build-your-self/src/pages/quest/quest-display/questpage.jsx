@@ -30,10 +30,10 @@ export function QuestPage({
       />
       <div className="questpage-div">
         <div className="quest-status">
-          {quest.map((quest, index) => (
+          {quest.map((q, index) => (
             <TimerQuest
-              key={quest.id}
-              quest={quest}
+              key={q.id}
+              quest={q}
               setExp={setExp}
               setQuest={setQuest}
               deleteThis={deleteThis}
@@ -43,10 +43,10 @@ export function QuestPage({
             />
           ))}
         </div>
-         <div className="commission-div">
-        <button onClick={() => setOpenQuest(true)} className="commission-button">
-          Commission a quest
-        </button>
+        <div className="commission-div">
+          <button onClick={() => setOpenQuest(true)} className="commission-button">
+            Commission a quest
+          </button>
         </div>
       </div>
       {openQuest && (
@@ -57,7 +57,7 @@ export function QuestPage({
           />
         </Overlay>
       )}
-      
+
     </>
   );
 }

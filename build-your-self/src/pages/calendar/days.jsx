@@ -1,50 +1,48 @@
 import "./days.css";
-export function DaysOfTheMonth({changingDate, days, contributions = {}}) {
+
+export function DaysOfTheMonth({ changingDate, days, contributions = {} }) {
   const month = changingDate.month;
   const year = changingDate.year;
+
   function getNumberDays(month, year) {
     return new Date(year, month + 1, 0).getDate();
   }
-  const numberDays =
-    getNumberDays(month, year);
-  const firstday =
-    new Date(year, month, 1).getDay();
+
+  const numberDays = getNumberDays(month, year);
+  const firstday = new Date(year, month, 1).getDay();
+
   return (
     <div className="grid-div">
       {days.map((day, index) => (
-        <p key={`day-${index}`}>
+        <div key={`day-${index}`} className="days-calendar">
           {day}
-        </p>
+        </div>
       ))}
       {Array(firstday)
         .fill("")
         .map((_, index) => (
-          <p key={`blank-${index}`}></p>
-      ))}
+          <div key={`blank-${index}`} />
+        ))}
       {Array(numberDays)
         .fill("")
         .map((_, index) => {
-          const dateKey =
-            `${year}-${month + 1}-${index + 1}`;
-          const exp =
-            contributions[dateKey] || 0;
-          const intensity =
-            Math.min(exp / 100, 1);
+          const dateKey = `${year}-${month + 1}-${index + 1}`;
+          const exp = contributions[dateKey] || 0;
+          const intensity = Math.min(exp / 100, 1);
           return (
-            <p
+            <div 
               key={`date-${index}`}
+              className="date-cell"
               style={{
                 backgroundColor:
-                  exp > 0
-                    ? `rgba(0, 180, 0, ${intensity})`
-                    : "",
-                color: "black"
+                  exp > 0 ? `rgba(0, 180, 0, ${intensity})` : "",
+                color: "black",
               }}
             >
               {index + 1}
-            </p>
+            </div>
           );
-      })}
+        })}
     </div>
   );
 }

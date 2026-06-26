@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { AttachReward } from "../../pages/quest/reward-display/attachReward";
 import './rewarddiv.css'
-export function RewardDiv({ item, index, setReward }) {
+
+export function RewardDiv({ item, index, setReward, onDelete }) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   return (
     <div className="display-reward-exp">
       <div className="rewards-div">
@@ -21,7 +25,33 @@ export function RewardDiv({ item, index, setReward }) {
             />
           </div>
           <div>
-            <p>Progress : {item.rewardExp} / {item.requiredExp}</p></div>
+            <p>Progress : {item.rewardExp} / {item.requiredExp}</p>
+          </div>
+
+          {!confirmDelete ? (
+            <button
+              className="delete-btn"
+              onClick={() => setConfirmDelete(true)}
+            >
+              Delete
+            </button>
+          ) : (
+            <div className="confirm-delete">
+              <p>Are you sure?</p>
+              <button
+                className="confirm-yes"
+                onClick={() => onDelete(index)}
+              >
+                Yes
+              </button>
+              <button
+                className="confirm-no"
+                onClick={() => setConfirmDelete(false)}
+              >
+                No
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

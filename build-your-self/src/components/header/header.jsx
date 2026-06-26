@@ -12,7 +12,7 @@ export function Header(){
       <div><p className='quest-link'>Quest</p></div>
       </Link>
       <Link to="/calendar">
-      <div><p className='calendar-link'>Reward</p></div>
+      <div><p className='calendar-link'>Progress</p></div>
       </Link>
     </div>
   )

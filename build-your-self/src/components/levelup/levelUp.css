@@ -31,7 +31,7 @@
 }
 .level-status{
   display: flex;
-  background-color: #abff74;
+  background-color: #aff580;
   transition: width 0.5s;
   height: 100%;
   overflow: hidden;

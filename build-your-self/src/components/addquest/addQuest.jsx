@@ -8,6 +8,7 @@ export function AddingQuest({ close, setQuest }) {
   function addQuest() {
     if (!questName || !duration) return;
     setQuest(prev => [...prev, {
+      id : crypto.randomUUID(),
       questName,
       duration: Number(duration),
       description,

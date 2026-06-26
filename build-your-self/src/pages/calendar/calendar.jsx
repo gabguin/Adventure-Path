@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { DaysOfTheMonth } from "./days";
 import { Header } from "../../components/header/header";
+import './calendar.css'
+import leftArrow from '../../assets/left.png'
+import rightArrow from '../../assets/right.png'
+import { BackgroundImage } from "../../components/background/background";
+import backGround from '../../assets/genshin-calendar.jpg'
 export function CalendarJsx({ contributions }) {
   const now = new Date();
   const [month, setMonth] = useState(now.getMonth());
@@ -23,8 +28,20 @@ export function CalendarJsx({ contributions }) {
   return (
     <>
     <Header></Header>
-      <button
-        onClick={() => {
+    <BackgroundImage src={backGround}></BackgroundImage>
+    <div className="month-div">
+      <h1 className="month-header">
+        {calendarMonths[month]} {year}
+      </h1>
+    </div>
+      <DaysOfTheMonth
+        changingDate={{ month, year }}
+        days={days}
+        contributions={contributions}
+      />
+    
+    <div className="button-div">
+       <button onClick={() => {
           if (month === 0) {
             setMonth(11);
             setYear(prev => prev - 1);
@@ -33,10 +50,9 @@ export function CalendarJsx({ contributions }) {
           setMonth(prev => prev - 1);
         }}
       >
-        prev
+        <img src={leftArrow}/>
       </button>
-      <button
-        onClick={() => {
+      <button onClick={() => {
           if (month === 11) {
             setMonth(0);
             setYear(prev => prev + 1);
@@ -45,16 +61,9 @@ export function CalendarJsx({ contributions }) {
           setMonth(prev => prev + 1);
         }}
       >
-        next
+        <img src={rightArrow}/>
       </button>
-      <h1>
-        {calendarMonths[month]} {year}
-      </h1>
-      <DaysOfTheMonth
-        changingDate={{ month, year }}
-        days={days}
-        contributions={contributions}
-      />
+     </div>
     </>
   );
 }
