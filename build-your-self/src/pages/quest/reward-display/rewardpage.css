@@ -30,3 +30,23 @@ body{
 .add-reward-button:hover{
   opacity: 0.5;
 }
+.daily-rewards{
+  background-color: inherit;
+  border: none;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 25px;
+}
+.daily-rewards:hover{
+  opacity: 0.6;
+}
+.main-event{
+  color: white;
+}
+.daily-reward-div, .main-event{
+  display: flex;
+  justify-content: center;
+}

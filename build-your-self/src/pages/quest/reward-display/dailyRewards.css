@@ -1,0 +1,39 @@
+.dailyquest-div{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  place-items: center;
+  background-color: rgb(231, 182, 125);
+  padding: 5px;
+}
+.main-div{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+  padding: 20px;
+  background-color: rgb(197, 154, 81);
+}
+.wiki{
+  z-index: 1;
+  position: relative;
+}
+.claimed-button{
+  background-color: rgb(74, 70, 70);
+  color: white;
+  cursor: not-allowed;
+}
+.claim-button{
+  background-color: gold;
+  color: black;
+}
+.daily-quest-title{
+  display: flex;
+  justify-content: center;
+  font-size: 33px;
+  font-weight: 800;
+}
+.close-button{
+  background-color: inherit;
+  width: 50%;
+  margin: 0 auto;
+}

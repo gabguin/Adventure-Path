@@ -1,9 +1,9 @@
-import { Header } from "../../../components/header/header"
-import { TimerQuest } from "../../../components/timer/timer"
+import { Header } from "../../../components/header/header";
+import { TimerQuest } from "../../../components/timer/timer";
 import { useState } from "react";
 import { AddingQuest } from "../../../components/addquest/addQuest";
-import './questpage.css'
-import QuestBoard from './../../../assets/quest-board.jpg'
+import "./questpage.css";
+import QuestBoard from "./../../../assets/quest-board.jpg";
 import { BackgroundImage } from "../../../components/background/background";
 import { RewardPage } from "../reward-display/rewardpage";
 import { Overlay } from "../../../components/overlay/overlay";
@@ -13,11 +13,12 @@ export function QuestPage({
   setQuest,
   setReward,
   reward,
-  trackContribution
+  trackContribution,
+  dailyquest,
 }) {
   const [openQuest, setOpenQuest] = useState(false);
   function deleteThis(id) {
-    setQuest(prev => prev.filter(q => q.id !== id));
+    setQuest((prev) => prev.filter((q) => q.id !== id));
     localStorage.removeItem(`timer-${id}`);
   }
   return (
@@ -27,6 +28,8 @@ export function QuestPage({
       <RewardPage
         setReward={setReward}
         reward={reward}
+        dailyquest={dailyquest}
+        setExp={setExp}
       />
       <div className="questpage-div">
         <div className="quest-status">
@@ -44,20 +47,19 @@ export function QuestPage({
           ))}
         </div>
         <div className="commission-div">
-          <button onClick={() => setOpenQuest(true)} className="commission-button">
+          <button
+            onClick={() => setOpenQuest(true)}
+            className="commission-button"
+          >
             Commission a quest
           </button>
         </div>
       </div>
       {openQuest && (
         <Overlay>
-          <AddingQuest
-            close={() => setOpenQuest(false)}
-            setQuest={setQuest}
-          />
+          <AddingQuest close={() => setOpenQuest(false)} setQuest={setQuest} />
         </Overlay>
       )}
-
     </>
   );
 }

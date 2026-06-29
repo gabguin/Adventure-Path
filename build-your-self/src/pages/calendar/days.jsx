@@ -1,18 +1,16 @@
 import "./days.css";
-
+import backGround from '../../assets/calendar-design.jpg'
 export function DaysOfTheMonth({ changingDate, days, contributions = {} }) {
   const month = changingDate.month;
   const year = changingDate.year;
-
   function getNumberDays(month, year) {
     return new Date(year, month + 1, 0).getDate();
   }
-
   const numberDays = getNumberDays(month, year);
   const firstday = new Date(year, month, 1).getDay();
-
   return (
-    <div className="grid-div">
+    <div className="grid-div" style={{backgroundImage : `url(${backGround})`,
+              backgroundSize: "cover", backgroundRepeat : "no-repeat", backgroundPosition: "center" }}>
       {days.map((day, index) => (
         <div key={`day-${index}`} className="days-calendar">
           {day}

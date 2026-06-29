@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 395px));
   gap: 20px;
   width: 100%;
+
 }
 .title-div{
   display: flex;
@@ -66,3 +67,4 @@
 .add-a-reward{
   font-size: 250px;
 }
+  
